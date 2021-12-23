@@ -22,6 +22,7 @@ namespace RandomUserApp.UWP
             this.InitializeComponent();
 
             LoadApplication(new RandomUserApp.App());
+            FFImageLoading.Forms.Platform.CachedImageRenderer.Init();
         }
     }
 }

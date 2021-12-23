@@ -1,5 +1,6 @@
-﻿using RandomUserApp.Services;
-using RandomUserApp.Views;
+﻿using RandomUserApp.Data.DataBases
+;
+using RandomUserApp.Presentation.UX.UI.Pages;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,8 +14,8 @@ namespace RandomUserApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            //DependencyService.Register<MockDataStore>();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()

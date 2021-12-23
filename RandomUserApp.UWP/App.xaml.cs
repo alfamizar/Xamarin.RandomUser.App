@@ -1,7 +1,9 @@
-﻿using System;
+﻿using FFImageLoading.Forms;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -57,7 +59,14 @@ namespace RandomUserApp.UWP
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
                 global::Xamarin.Forms.Forms.SetFlags("Shell_UWP_Experimental");
-                Xamarin.Forms.Forms.Init(e);
+
+                var assembliesToInclude = new List<Assembly>
+                {
+                    typeof(CachedImage).GetTypeInfo().Assembly,
+                    typeof(FFImageLoading.Forms.Platform.CachedImageRenderer).GetTypeInfo().Assembly
+                };
+
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {

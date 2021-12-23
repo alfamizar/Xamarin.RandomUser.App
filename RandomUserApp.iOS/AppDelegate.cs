@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using UIKit;
 
@@ -24,6 +24,8 @@ namespace RandomUserApp.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App());
+            CachedImageRenderer.Init();
+            CachedImageRenderer.InitImageSourceHandler();
 
             return base.FinishedLaunching(app, options);
         }
