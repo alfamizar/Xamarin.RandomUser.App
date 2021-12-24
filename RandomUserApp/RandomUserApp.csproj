@@ -25,6 +25,7 @@
     <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\UseCases\" />
     <Folder Include="Presentation\UX\Common\" />
+    <Folder Include="Presentation\UX\CustomViews\" />
     <Folder Include="Presentation\UX\UI\Styles\" />
     <Folder Include="Presentation\UX\UI\Views\" />
   </ItemGroup>
@@ -44,9 +45,6 @@
   <ItemGroup>
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Presentation\UX\UI\Pages\MainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 </Project>

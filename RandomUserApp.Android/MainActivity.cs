@@ -5,6 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
+using AndroidX.AppCompat.App;
 
 namespace RandomUserApp.Droid
 {
@@ -14,11 +15,10 @@ namespace RandomUserApp.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo;
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             CachedImageRenderer.InitImageViewHandler();
-
             CachedImageRenderer.Init(enableFastRenderer: true);
 
             LoadApplication(new App());

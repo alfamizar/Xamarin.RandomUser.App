@@ -3,14 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
              xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
-             xmlns:viewmodels="clr-namespace:RandomUserApp.Presentation.UX.ViewModels" x:DataType="viewmodels:UserDetailViewModel"
+             xmlns:viewmodels="clr-namespace:RandomUserApp.Presentation.UX.ViewModels" 
+             x:DataType="viewmodels:UserDetailViewModel"
              x:Class="RandomUserApp.Presentation.UX.UI.Pages.UserDetailPage"
-             Title="{Binding Title}">
+             Shell.TabBarIsVisible="{Binding TabBarIsVisible}"
+             Title="User Details">
 
-    <StackLayout Spacing="20" Padding="15">
+    <StackLayout Spacing="20" Padding="15" HorizontalOptions="Center">
         <Frame Style="{StaticResource profileImageFrameStyle}">
             <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
-			                                WidthRequest="100" HeightRequest="100"
+			                                WidthRequest="200" HeightRequest="200"
 			                                DownsampleToViewSize="true"                                               
 			                                Source="{Binding User.Picture.Large}">
                 <ffimageloading:CachedImage.Transformations>
@@ -18,15 +20,70 @@
                 </ffimageloading:CachedImage.Transformations>
             </ffimageloading:CachedImage>
         </Frame>
-        <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding User.Name.First}" FontSize="Small"/>
-        <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding User.Name.Last}" FontSize="Small"/>
-
-        <StackLayout.GestureRecognizers>
-            <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeCommand}" CommandParameter="Left" />
-            <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeCommand}" CommandParameter="Right" />
-        </StackLayout.GestureRecognizers>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="First name: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.First, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Last name: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.Last, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Title: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.Title, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Age: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Dob.Age, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Country: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Location.Country, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="City: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Location.City, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Phone number: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Phone, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
+        <Label>
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Email: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Email, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
     </StackLayout>
 
 </ContentPage>

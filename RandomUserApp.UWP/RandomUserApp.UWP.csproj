@@ -106,6 +106,7 @@
   <ItemGroup>
     <Content Include="dice_icon.svg" />
     <Content Include="dice_icon_uwp.png" />
+    <Content Include="face_icon_uwp.png" />
     <Content Include="female_icon.svg" />
     <Content Include="female_icon_uwp.png" />
     <Content Include="male_icon.svg" />
@@ -138,6 +139,7 @@
     <Content Include="Assets\Wide310x150Logo.scale-100.png" />
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="random_icon.png" />
     <Content Include="xamarin_logo.png" />
     <Content Include="icon_about.png" />
     <Content Include="icon_feed.png" />

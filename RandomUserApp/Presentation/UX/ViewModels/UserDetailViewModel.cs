@@ -1,8 +1,6 @@
-﻿using RandomUserApp.Domain.Models;
-using System;
-using System.Diagnostics;
+﻿using RandomUserApp.Data.Repositories.Rest;
+using RandomUserApp.Domain.Models;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.ViewModels
@@ -10,36 +8,17 @@ namespace RandomUserApp.Presentation.UX.ViewModels
     [QueryProperty(nameof(UserJson), nameof(UserJson))]
     public class UserDetailViewModel : BaseViewModel
     {
-        private string itemId;
-        private string text;
-        private string description;
         private User _user;
+        private bool _tabBarIsVisible = true;
         private string _userJson;
-        public string Id { get; set; }
 
-        public Command SwipeCommand { get; }
-
-        public UserDetailViewModel()
+        public bool TabBarIsVisible
         {
-            SwipeCommand = new Command<string>(OnSwipe);
-        }
-
-        private void OnSwipe(object swipeDirection)
-        {
-            Debug.WriteLine(swipeDirection);
-            Debug.WriteLine(swipeDirection.GetType());
-        }
-
-        public string Text
-        {
-            get => text;
-            set => SetProperty(ref text, value);
-        }
-
-        public string Description
-        {
-            get => description;
-            set => SetProperty(ref description, value);
+            get => _tabBarIsVisible;
+            set
+            {
+                SetProperty(ref _tabBarIsVisible, value);
+            }
         }
 
         public User User
@@ -47,9 +26,7 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             get => _user;
             set
             {
-                //var user = JsonSerializer.Deserialize<User>(value);
                 SetProperty(ref _user, value);
-                LoadUser(value);
             }
         }
 
@@ -59,36 +36,30 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             set
             {
                 SetProperty(ref _userJson, value);
-                User = JsonSerializer.Deserialize<User>(value);               
+                User = JsonSerializer.Deserialize<User>(value);
+                TabBarIsVisible = false;
             }
         }
 
-        /*public string ItemId
+        public override async void OnAppearing()
         {
-            get
-            {
-                return itemId;
-            }
-            set
-            {
-                itemId = value;
-                LoadItemId(value);
-            }
-        }*/
+            base.OnAppearing();
 
-        public async void LoadUser(User user)
-        {
-            /*try
+            IsBusy = true;
+
+            if (_user == null)
             {
-                var item = await DataStore.GetItemAsync(itemId);
-                Id = item.Id;
-                Text = item.Text;
-                Description = item.Description;
+                var respone = await MobileService.getInstance().GetUsers(null, 1);
+                User = respone.Users[0];
             }
-            catch (Exception)
-            {
-                Debug.WriteLine("Failed to Load Item");
-            }*/
+
+            IsBusy = false;
+        }
+
+        public override void OnDisappearing()
+        {
+            base.OnAppearing();
+            User = null;
         }
     }
 }

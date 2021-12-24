@@ -2,9 +2,22 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:RandomUserApp.Presentation.UX.UI.Pages"
-       Title="CrossMark"
        x:Class="RandomUserApp.AppShell">
 
+    <TabBar>
+        <ShellContent x:Name="female" 
+                      Title="Female" 
+                      Icon="{OnPlatform iOS=female_icon.svg, Android=female_icon, UWP=female_icon_uwp.png}" 
+                      ContentTemplate="{DataTemplate local:FemaleUsersPage}" />
+        <ShellContent x:Name="randomItem" 
+                      Title="Random" Icon="{OnPlatform iOS=dice_icon.svg, Android=face_icon, UWP=face_icon_uwp.png}" 
+                      ContentTemplate="{DataTemplate local:UserDetailPage}" />
+        <ShellContent x:Name="male" 
+                      Title="Male" 
+                      Icon="{OnPlatform iOS=male_icon.svg, Android=male_icon, UWP=male_icon_uwp.png}" 
+                      ContentTemplate="{DataTemplate local:MaleUsersPage}" />
+    </TabBar>
+    
     <!--
         The overall app visual hierarchy is defined here, along with navigation.
     
@@ -29,11 +42,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
-    <TabBar>
-        <ShellContent Title="Female" Icon="{OnPlatform iOS=female_icon.svg, Android=female_icon, UWP=female_icon_uwp.png}" ContentTemplate="{DataTemplate local:FemaleUsersPage}" />
-        <ShellContent Title="Random" Icon="{OnPlatform iOS=dice_icon.svg, Android=dice_icon, UWP=dice_icon_uwp.png}" ContentTemplate="{DataTemplate local:UserDetailPage}" />
-        <ShellContent Title="Male" Icon="{OnPlatform iOS=male_icon.svg, Android=male_icon, UWP=male_icon_uwp.png}" ContentTemplate="{DataTemplate local:MaleUsersPage}" />
-    </TabBar>
+    
     <!--
         If you would like to navigate to this content you can do so by calling
         await Shell.Current.GoToAsync("//LoginPage");
@@ -42,6 +51,4 @@
         <ShellContent Route="LoginPage" ContentTemplate="{DataTemplate local:LoginPage}" />
     </TabBar>
     -->
-
-
 </Shell>
