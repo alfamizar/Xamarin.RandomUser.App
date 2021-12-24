@@ -23,64 +23,64 @@
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="First name: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Name.First, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="First name: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.First, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Last name: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Name.Last, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Last name: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.Last, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Title: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Name.Title, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Title: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Name.Title, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Age: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Dob.Age, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Age: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Dob.Age, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Country: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Location.Country, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Country: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Location.Country, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="City: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Location.City, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="City: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Location.City, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Phone number: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Phone, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Phone number: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Phone, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>
         <Label>
             <Label.FormattedText>
                 <FormattedString>
-                    <Span Text="Email: " Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
-                    <Span Text="{Binding User.Email, StringFormat='{0}'}" Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="Email: " Style="{DynamicResource ListItemDetailTextStyle}" FontSize="16"/>
+                    <Span Text="{Binding User.Email, StringFormat='{0}'}" Style="{DynamicResource ListItemTextStyle}" FontSize="16"/>
                 </FormattedString>
             </Label.FormattedText>
         </Label>

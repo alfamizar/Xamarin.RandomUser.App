@@ -1,60 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:RandomUserApp.Presentation.UX.UI.Views"
              x:Class="RandomUserApp.Presentation.UX.UI.Pages.FemaleUsersPage"
-             xmlns:local="clr-namespace:RandomUserApp.Presentation.UX.ViewModels"  
-             xmlns:model="clr-namespace:RandomUserApp.Domain.Models" 
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
              Title="Female">
-
+    
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:UsersViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" windows:RefreshView.RefreshPullDirection="RightToLeft">
-        <CollectionView x:Name="ItemsListView"
-                ItemsSource="{Binding Users}"
-                SelectionMode="None">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout Spacing="8" HorizontalOptions="EndAndExpand" x:DataType="model:User">
-                        <Frame Style="{StaticResource FrameCardViewStyle}">
-                            <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}">
-                                <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
-                                    <Frame Style="{StaticResource profileImageFrameStyle}">
-                                        <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
-			                                WidthRequest="100" HeightRequest="100"
-			                                DownsampleToViewSize="true"                                               
-			                                Source="{Binding Picture.Large}">
-                                            <ffimageloading:CachedImage.Transformations>
-                                                <fftransformations:CircleTransformation />
-                                            </ffimageloading:CachedImage.Transformations>
-                                        </ffimageloading:CachedImage>
-                                    </Frame>
-                                    <StackLayout Style="{StaticResource detailsStackLayout}">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="{Binding Name.First}" Style="{StaticResource NameLabel}" />
-                                            <Label Text="{Binding Name.Last}" Style="{StaticResource NameLabel}" />
-                                        </StackLayout>
-                                        <Label Text="{Binding Name.Title}" Style="{StaticResource NameLabel}" />
-                                        <Label Text="{Binding Dob.Age}" Style="{StaticResource NameLabel}" />
-                                    </StackLayout>
-                                </StackLayout>
-                            </StackLayout>
-                        </Frame>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersViewModel}}, Path=ItemTappedCommand}"		
-                                CommandParameter="{Binding .}">
-                            </TapGestureRecognizer>
-                        </StackLayout.GestureRecognizers>
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </RefreshView>
+    <views:UsersCollectionView/>
 </ContentPage>
 

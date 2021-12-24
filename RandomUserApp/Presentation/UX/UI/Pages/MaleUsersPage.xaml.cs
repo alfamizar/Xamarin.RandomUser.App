@@ -1,20 +1,12 @@
-﻿using RandomUserApp.Domain.Models;
-using RandomUserApp.Presentation.UX.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using RandomUserApp.Presentation.UX.ViewModels;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace RandomUserApp.Presentation.UX.UI.Pages
 {
     public partial class MaleUsersPage : ContentPage
     {
-        UsersViewModel _viewModel;
+        private readonly UsersViewModel _viewModel;
 
         public MaleUsersPage()
         {

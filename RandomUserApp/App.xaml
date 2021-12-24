@@ -2,6 +2,7 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="RandomUserApp.App">
+    
     <!--
         Define global resources and styles here, that apply to all pages in your app.
     -->
@@ -85,9 +86,7 @@
                 <Setter Property="Orientation" Value="Horizontal" />
                 <Setter Property="Spacing" Value="8" />
             </Style>
-        </ResourceDictionary>        
+        </ResourceDictionary>
     </Application.Resources>
-    
-    
-    
+
 </Application>

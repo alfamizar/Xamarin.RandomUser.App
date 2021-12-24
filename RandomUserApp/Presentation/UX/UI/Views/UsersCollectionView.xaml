@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:views="clr-namespace:RandomUserApp.Presentation.UX.UI.Views" 
+             xmlns:local="clr-namespace:RandomUserApp.Presentation.UX.ViewModels"
+             x:DataType="views:UsersCollectionView"
+             x:Class="RandomUserApp.Presentation.UX.UI.Views.UsersCollectionView"
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:model="clr-namespace:RandomUserApp.Domain.Models">
+    <ContentView.Content>
+        <RefreshView x:DataType="local:UsersViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" windows:RefreshView.RefreshPullDirection="RightToLeft">
+            <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Users}"
+                SelectionMode="None">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="8" HorizontalOptions="EndAndExpand" x:DataType="model:User">
+                            <Frame Style="{StaticResource FrameCardViewStyle}">
+                                <StackLayout Style="{StaticResource itemsCardViewStackLayoutStyle}">
+                                    <StackLayout Style="{StaticResource itemsInsideCardViewStackLayoutStyle}">
+                                        <Frame Style="{StaticResource profileImageFrameStyle}">
+                                            <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                                WidthRequest="100" HeightRequest="100"
+			                                DownsampleToViewSize="true"                                               
+			                                Source="{Binding Picture.Large}">
+                                                <ffimageloading:CachedImage.Transformations>
+                                                    <fftransformations:CircleTransformation />
+                                                </ffimageloading:CachedImage.Transformations>
+                                            </ffimageloading:CachedImage>
+                                        </Frame>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                                <RowDefinition Height="*" />
+                                            </Grid.RowDefinitions>
+                                            <Label Text="{Binding Name.First}" Style="{StaticResource NameLabel}" Grid.Column="0" Grid.Row="0" />
+                                            <Label Text="{Binding Name.Last}" Style="{StaticResource NameLabel}" Grid.Column="1" Grid.Row="0" />
+                                            <Label Text="{Binding Name.Title}" Style="{StaticResource NameLabel}" Grid.Column="0" Grid.Row="1"/>
+                                            <Label Text="{Binding Dob.Age}" Style="{StaticResource NameLabel}" Grid.Column="0" Grid.Row="2"/>
+                                        </Grid>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersViewModel}}, Path=ItemTappedCommand}"		
+                                CommandParameter="{Binding .}">
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </ContentView.Content>
+</ContentView>

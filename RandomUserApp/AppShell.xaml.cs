@@ -1,6 +1,4 @@
 ﻿using RandomUserApp.Presentation.UX.UI.Pages;
-using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace RandomUserApp
@@ -14,12 +12,7 @@ namespace RandomUserApp
             Routing.RegisterRoute(nameof(UserDetailPage), typeof(UserDetailPage));
             Routing.RegisterRoute(nameof(MaleUsersPage), typeof(MaleUsersPage));
 
-            //CurrentItem.CurrentItem = CurrentItem.Items[1];
             CurrentItem = randomItem;
-        }
-
-        public void Tododo()
-        {
             //CurrentItem.CurrentItem = CurrentItem.Items[1];
         }
     }

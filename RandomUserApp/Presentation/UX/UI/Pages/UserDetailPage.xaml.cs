@@ -1,13 +1,11 @@
 ﻿using RandomUserApp.Presentation.UX.ViewModels;
-using System.ComponentModel;
-using System.Diagnostics;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.UI.Pages
 {
     public partial class UserDetailPage : ContentPage
     {
-        UserDetailViewModel _viewModel;
+        private readonly UserDetailViewModel _viewModel;
 
         public UserDetailPage()
         {
