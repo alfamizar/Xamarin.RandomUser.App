@@ -4,47 +4,46 @@ using RandomUserApp.Presentation.UX.UI.Pages;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.ViewModels
 {
     public class UsersViewModel : BaseViewModel
-    {       
-        private readonly MobileApi _mobileApi;
-
+    {
         private User _selectedItem;
         private string _gender;
         public ObservableCollection<User> Users { get; set; }
         public Command LoadItemsCommand { get; }
-        public Command<User> ItemTapped { get; }
+        public Command<User> ItemTappedCommand { get; }
+        public Command SwipeCommand { get; }
 
         public UsersViewModel()
         {
             Users = new ObservableCollection<User>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            LoadItemsCommand = new Command(async () => await ExecuteLoadUserssCommand());
 
-            ItemTapped = new Command<User>(OnUserSelected);
-
-            _mobileApi = new MobileApi();
-            //mobileApi.GetUsers(null, 0);
+            ItemTappedCommand = new Command<User>(OnUserSelected);
         }
 
-        async Task ExecuteLoadItemsCommand()
+        private async Task ExecuteLoadUserssCommand()
         {
             IsBusy = true;
 
             try
             {
                 Users.Clear();
-                var respone = await _mobileApi.GetUsers(Gender, 100);
+                var respone = await MobileService.getInstance().GetUsers(Gender, 100);
                 if (respone == null)
                 {
                     return;
                 }
+
+                Debug.WriteLine("Response Count____________________________________________________________________________________________________________________");
                 Debug.WriteLine(respone.Users.Count);
                 Debug.WriteLine("Response Count____________________________________________________________________________________________________________________");
-                Debug.WriteLine("Response Count____________________________________________________________________________________________________________________");
+
                 foreach (var user in respone.Users)
                 {
                     Users.Add(user);
@@ -82,7 +81,7 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             get => _gender;
             set
             {
-                SetProperty(ref _gender, value.ToLower());               
+                SetProperty(ref _gender, value.ToLower());
             }
         }
 
@@ -93,11 +92,8 @@ namespace RandomUserApp.Presentation.UX.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.Navigation.PushAsync(new UserDetailPage());
-
             // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?{nameof(UserDetailViewModel.ItemId)}={item.Id}");
-            //await Navigation.PushAsync(new UserDetailPage());
+            await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?{nameof(UserDetailViewModel.UserJson)}={JsonSerializer.Serialize<User>(user)}");
         }
     }
 }

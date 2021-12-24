@@ -1,17 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="RandomUserApp.Presentation.UX.UI.Pages.UsersPage"
-             Title="{Binding Title}"
+             x:Class="RandomUserApp.Presentation.UX.UI.Pages.MaleUsersPage"
              xmlns:local="clr-namespace:RandomUserApp.Presentation.UX.ViewModels"  
-             xmlns:model="clr-namespace:RandomUserApp.Domain.Models" xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             x:Name="BrowseItemsPage">
+             xmlns:model="clr-namespace:RandomUserApp.Domain.Models" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core"
+             Title="Male">
 
     <!--
       x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
       https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
     -->
-    <RefreshView x:DataType="local:UsersViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+    <RefreshView x:DataType="local:UsersViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" windows:RefreshView.RefreshPullDirection="RightToLeft">
         <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Users}"
                 SelectionMode="None">
@@ -32,8 +34,12 @@
                                         </ffimageloading:CachedImage>
                                     </Frame>
                                     <StackLayout Style="{StaticResource detailsStackLayout}">
-                                        <Label Text="{Binding Name.First}" Style="{StaticResource NameLabel}" />
-                                        <Label Text="{Binding Name.Last}" Style="{StaticResource NameLabel}" />
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Name.First}" Style="{StaticResource NameLabel}" />
+                                            <Label Text="{Binding Name.Last}" Style="{StaticResource NameLabel}" />
+                                        </StackLayout>
+                                        <Label Text="{Binding Name.Title}" Style="{StaticResource NameLabel}" />
+                                        <Label Text="{Binding Dob.Age}" Style="{StaticResource NameLabel}" />
                                     </StackLayout>
                                 </StackLayout>
                             </StackLayout>
@@ -41,7 +47,7 @@
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersViewModel}}, Path=ItemTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:UsersViewModel}}, Path=ItemTappedCommand}"		
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
@@ -51,3 +57,4 @@
         </CollectionView>
     </RefreshView>
 </ContentPage>
+

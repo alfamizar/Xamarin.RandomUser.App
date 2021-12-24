@@ -12,11 +12,11 @@ using Xamarin.Forms.Xaml;
 
 namespace RandomUserApp.Presentation.UX.UI.Pages
 {
-    public partial class UsersPage : ContentPage
+    public partial class MaleUsersPage : ContentPage
     {
         UsersViewModel _viewModel;
 
-        public UsersPage()
+        public MaleUsersPage()
         {
             InitializeComponent();
 

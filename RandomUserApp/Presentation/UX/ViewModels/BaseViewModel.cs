@@ -26,6 +26,8 @@ namespace RandomUserApp.Presentation.UX.ViewModels
 
         public virtual void OnAppearing(){}
 
+        public virtual void OnDisappearing() { }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName] string propertyName = "",
             Action onChanged = null)

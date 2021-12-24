@@ -15,6 +15,12 @@ namespace RandomUserApp.Presentation.UX.UI.Pages
             BindingContext = _viewModel = new UserDetailViewModel();
         }
 
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            _viewModel.OnDisappearing();
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
