@@ -93,7 +93,7 @@ namespace RandomUserApp.Presentation.UX.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.Navigation.PushAsync(new UserDetailPage(user));
+            await App.Current.MainPage.Navigation.PushAsync(new UserDetailPage());
 
             // This will push the ItemDetailPage onto the navigation stack
             //await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?{nameof(UserDetailViewModel.ItemId)}={item.Id}");
