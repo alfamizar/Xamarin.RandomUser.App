@@ -8,13 +8,13 @@
     
     
     <TabbedPage.Children>
-        <local:UsersPage 
+        <local:FemaleUsersPage 
             Title="Female"
             IconImageSource="{OnPlatform iOS=female_icon.svg, Android=female_icon, UWP=female_icon_uwp.png}"/>
         <local:UserDetailPage 
             Title="Random"
             IconImageSource="{OnPlatform iOS=dice_icon.svg, Android=dice_icon, UWP=dice_icon_uwp.png}"/>
-        <local:UsersPage 
+        <local:MaleUsersPage 
             Title="Male"
             IconImageSource="{OnPlatform iOS=male_icon.svg, Android=male_icon, UWP=male_icon_uwp.png}"/>
     </TabbedPage.Children>

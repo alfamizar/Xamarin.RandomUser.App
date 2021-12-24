@@ -30,8 +30,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Presentation\UX\UI\Pages\UsersPage.xaml.cs">
-      <DependentUpon>UsersPage.xaml</DependentUpon>
+    <Compile Update="Presentation\UX\UI\Pages\MaleUsersPage.xaml.cs">
+      <DependentUpon>MaleUsersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Presentation\UX\UI\Pages\FemaleUsersPage.xaml.cs">
+      <DependentUpon>FemaleUsersPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Presentation\UX\UI\Pages\UserDetailPage.xaml.cs">
       <DependentUpon>UserDetailPage.xaml</DependentUpon>
@@ -39,6 +42,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="AppShell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Presentation\UX\UI\Pages\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

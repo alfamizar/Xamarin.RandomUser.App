@@ -4,13 +4,14 @@ using RandomUserApp.Presentation.UX.UI.Pages;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.ViewModels
 {
     public class UsersViewModel : BaseViewModel
-    {       
+    {
         private readonly MobileApi _mobileApi;
 
         private User _selectedItem;
@@ -18,11 +19,13 @@ namespace RandomUserApp.Presentation.UX.ViewModels
         public ObservableCollection<User> Users { get; set; }
         public Command LoadItemsCommand { get; }
         public Command<User> ItemTapped { get; }
+        public Command SwipeCommand { get; }
 
         public UsersViewModel()
         {
             Users = new ObservableCollection<User>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+            SwipeCommand = new Command<string>(OnSwipe);
 
             ItemTapped = new Command<User>(OnUserSelected);
 
@@ -82,8 +85,37 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             get => _gender;
             set
             {
-                SetProperty(ref _gender, value.ToLower());               
+                SetProperty(ref _gender, value.ToLower());
             }
+        }
+
+        private void OnSwipe(object swipeDirection)
+        {
+            if (!(swipeDirection is string direction)) return;
+            switch (direction)
+            {
+                case "Left":
+                    Debug.WriteLine(Shell.Current.CurrentPage.Title);
+                    if (Shell.Current.CurrentPage.Title == "Female")
+                    {
+                        if (!(Shell.Current is AppShell shell)) return;
+                        shell.Tododo();
+                    }
+                    break;
+                case "Right":
+                    Debug.WriteLine(Shell.Current.CurrentPage.Title);
+                    if (Shell.Current.CurrentPage.Title == "Male")
+                    {
+                        if (!(Shell.Current is AppShell shell)) return;
+                        shell.Tododo();
+                    }
+                    break;
+                default:
+                    return;
+
+            }
+            Debug.WriteLine(swipeDirection);
+            Debug.WriteLine(swipeDirection.GetType());
         }
 
         async void OnUserSelected(User user)
@@ -93,11 +125,8 @@ namespace RandomUserApp.Presentation.UX.ViewModels
                 return;
             }
 
-            await App.Current.MainPage.Navigation.PushAsync(new UserDetailPage(user));
-
             // This will push the ItemDetailPage onto the navigation stack
-            //await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?{nameof(UserDetailViewModel.ItemId)}={item.Id}");
-            //await Navigation.PushAsync(new UserDetailPage());
+            await Shell.Current.GoToAsync($"{nameof(UserDetailPage)}?{nameof(UserDetailViewModel.UserJson)}={JsonSerializer.Serialize<User>(user)}");
         }
     }
 }

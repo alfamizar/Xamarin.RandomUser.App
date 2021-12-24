@@ -1,14 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
+             xmlns:viewmodels="clr-namespace:RandomUserApp.Presentation.UX.ViewModels" x:DataType="viewmodels:UserDetailViewModel"
              x:Class="RandomUserApp.Presentation.UX.UI.Pages.UserDetailPage"
              Title="{Binding Title}">
 
     <StackLayout Spacing="20" Padding="15">
+        <Frame Style="{StaticResource profileImageFrameStyle}">
+            <ffimageloading:CachedImage HorizontalOptions="Center" VerticalOptions="Center"
+			                                WidthRequest="100" HeightRequest="100"
+			                                DownsampleToViewSize="true"                                               
+			                                Source="{Binding User.Picture.Large}">
+                <ffimageloading:CachedImage.Transformations>
+                    <fftransformations:CircleTransformation />
+                </ffimageloading:CachedImage.Transformations>
+            </ffimageloading:CachedImage>
+        </Frame>
         <Label Text="Text:" FontSize="Medium" />
-        <Label Text="{Binding Text}" FontSize="Small"/>
+        <Label Text="{Binding User.Name.First}" FontSize="Small"/>
         <Label Text="Description:" FontSize="Medium" />
-        <Label Text="{Binding Description}" FontSize="Small"/>
+        <Label Text="{Binding User.Name.Last}" FontSize="Small"/>
+
+        <StackLayout.GestureRecognizers>
+            <SwipeGestureRecognizer Direction="Left" Command="{Binding SwipeCommand}" CommandParameter="Left" />
+            <SwipeGestureRecognizer Direction="Right" Command="{Binding SwipeCommand}" CommandParameter="Right" />
+        </StackLayout.GestureRecognizers>
     </StackLayout>
-    
+
 </ContentPage>

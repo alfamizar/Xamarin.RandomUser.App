@@ -1,18 +1,34 @@
 ﻿using RandomUserApp.Domain.Models;
 using System;
 using System.Diagnostics;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.ViewModels
 {
-    [QueryProperty(nameof(ItemId), nameof(ItemId))]
+    [QueryProperty(nameof(UserJson), nameof(UserJson))]
     public class UserDetailViewModel : BaseViewModel
     {
         private string itemId;
         private string text;
         private string description;
+        private User _user;
+        private string _userJson;
         public string Id { get; set; }
+
+        public Command SwipeCommand { get; }
+
+        public UserDetailViewModel()
+        {
+            SwipeCommand = new Command<string>(OnSwipe);
+        }
+
+        private void OnSwipe(object swipeDirection)
+        {
+            Debug.WriteLine(swipeDirection);
+            Debug.WriteLine(swipeDirection.GetType());
+        }
 
         public string Text
         {
@@ -26,7 +42,28 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             set => SetProperty(ref description, value);
         }
 
-        public string ItemId
+        public User User
+        {
+            get => _user;
+            set
+            {
+                //var user = JsonSerializer.Deserialize<User>(value);
+                SetProperty(ref _user, value);
+                LoadUser(value);
+            }
+        }
+
+        public string UserJson
+        {
+            get => _userJson;
+            set
+            {
+                SetProperty(ref _userJson, value);
+                User = JsonSerializer.Deserialize<User>(value);               
+            }
+        }
+
+        /*public string ItemId
         {
             get
             {
@@ -37,9 +74,9 @@ namespace RandomUserApp.Presentation.UX.ViewModels
                 itemId = value;
                 LoadItemId(value);
             }
-        }
+        }*/
 
-        public async void LoadItemId(string itemId)
+        public async void LoadUser(User user)
         {
             /*try
             {
