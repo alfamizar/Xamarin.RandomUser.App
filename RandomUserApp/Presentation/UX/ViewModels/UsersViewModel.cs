@@ -42,11 +42,11 @@ namespace RandomUserApp.Presentation.UX.ViewModels
         {
             Users = new ObservableCollection<User>();
 
-            LoadItemsCommand = new Command(async () => await ExecuteLoadUserssCommand());
+            LoadItemsCommand = new Command(LoadUsers);
             ItemTappedCommand = new Command<User>(OnUserSelected);
         }
 
-        private async Task ExecuteLoadUserssCommand()
+        private async void LoadUsers()
         {
             IsBusy = true;
 
