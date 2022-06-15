@@ -11,7 +11,6 @@ namespace RandomUserApp.Domain.Models
         public Info Info { get; set; }
     }
 
-    
     public class User
     {
         public string Gender { get; set; }

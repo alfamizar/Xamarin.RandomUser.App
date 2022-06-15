@@ -19,7 +19,7 @@ namespace RandomUserApp.Data.Repositories.Rest
             _mobileApi = RestService.For<IApi>(Constants.Constants.BaseUrl);
         }
 
-        static public MobileService getInstance()
+        static public MobileService GetInstance()
         {
             if (instance == null)
                 instance = new MobileService();

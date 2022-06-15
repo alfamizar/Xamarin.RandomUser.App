@@ -13,7 +13,26 @@ namespace RandomUserApp.Presentation.UX.ViewModels
     public class UsersViewModel : BaseViewModel
     {
         private User _selectedItem;
+        public User SelectedUser
+        {
+            get => _selectedItem;
+            set
+            {
+                SetProperty(ref _selectedItem, value);
+                OnUserSelected(value);
+            }
+        }
+
         private string _gender;
+        public string Gender
+        {
+            get => _gender;
+            set
+            {
+                SetProperty(ref _gender, value.ToLower());
+            }
+        }
+
         public ObservableCollection<User> Users { get; set; }
         public Command LoadItemsCommand { get; }
         public Command<User> ItemTappedCommand { get; }
@@ -22,8 +41,8 @@ namespace RandomUserApp.Presentation.UX.ViewModels
         public UsersViewModel()
         {
             Users = new ObservableCollection<User>();
-            LoadItemsCommand = new Command(async () => await ExecuteLoadUserssCommand());
 
+            LoadItemsCommand = new Command(async () => await ExecuteLoadUserssCommand());
             ItemTappedCommand = new Command<User>(OnUserSelected);
         }
 
@@ -34,16 +53,12 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             try
             {
                 Users.Clear();
-                var respone = await MobileService.getInstance().GetUsers(Gender, 100);
+                var respone = await MobileService.GetInstance().GetUsers(Gender, 100);
                 if (respone == null)
                 {
                     return;
                 }
-
-                Debug.WriteLine("Response Count____________________________________________________________________________________________________________________");
-                Debug.WriteLine(respone.Users.Count);
-                Debug.WriteLine("Response Count____________________________________________________________________________________________________________________");
-
+             
                 foreach (var user in respone.Users)
                 {
                     Users.Add(user);
@@ -64,25 +79,6 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             base.OnAppearing();
             IsBusy = true;
             SelectedUser = null;
-        }
-
-        public User SelectedUser
-        {
-            get => _selectedItem;
-            set
-            {
-                SetProperty(ref _selectedItem, value);
-                OnUserSelected(value);
-            }
-        }
-
-        public string Gender
-        {
-            get => _gender;
-            set
-            {
-                SetProperty(ref _gender, value.ToLower());
-            }
         }
 
         async void OnUserSelected(User user)

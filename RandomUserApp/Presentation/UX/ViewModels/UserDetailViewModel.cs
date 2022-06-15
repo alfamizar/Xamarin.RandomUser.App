@@ -9,18 +9,6 @@ namespace RandomUserApp.Presentation.UX.ViewModels
     public class UserDetailViewModel : BaseViewModel
     {
         private User _user;
-        private bool _tabBarIsVisible = true;
-        private string _userJson;
-
-        public bool TabBarIsVisible
-        {
-            get => _tabBarIsVisible;
-            set
-            {
-                SetProperty(ref _tabBarIsVisible, value);
-            }
-        }
-
         public User User
         {
             get => _user;
@@ -30,6 +18,7 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             }
         }
 
+        private string _userJson;
         public string UserJson
         {
             get => _userJson;
@@ -41,6 +30,16 @@ namespace RandomUserApp.Presentation.UX.ViewModels
             }
         }
 
+        private bool _tabBarIsVisible = true;
+        public bool TabBarIsVisible
+        {
+            get => _tabBarIsVisible;
+            set
+            {
+                SetProperty(ref _tabBarIsVisible, value);
+            }
+        }
+
         public override async void OnAppearing()
         {
             base.OnAppearing();
@@ -49,7 +48,7 @@ namespace RandomUserApp.Presentation.UX.ViewModels
 
             if (_user == null)
             {
-                var respone = await MobileService.getInstance().GetUsers(null, 1);
+                var respone = await MobileService.GetInstance().GetUsers(null, 1);
                 User = respone.Users[0];
             }
 
