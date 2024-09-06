@@ -1,4 +1,4 @@
-﻿using RandomUserApp.Domain.Models;
+﻿using RandomUserApp.Data.DTOs;
 using Refit;
 using System;
 using System.Collections.Generic;

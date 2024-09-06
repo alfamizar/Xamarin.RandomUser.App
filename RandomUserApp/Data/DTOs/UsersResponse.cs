@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 
-namespace RandomUserApp.Domain.Models
+namespace RandomUserApp.Data.DTOs
 {
     public class UsersResponse
     {

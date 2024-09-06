@@ -1,11 +1,10 @@
-﻿using RandomUserApp.Data.Repositories.Rest;
-using RandomUserApp.Domain.Models;
+﻿using RandomUserApp.Data.DTOs;
+using RandomUserApp.Data.Repositories.Rest;
 using RandomUserApp.Presentation.UX.UI.Pages;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.Json;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace RandomUserApp.Presentation.UX.ViewModels

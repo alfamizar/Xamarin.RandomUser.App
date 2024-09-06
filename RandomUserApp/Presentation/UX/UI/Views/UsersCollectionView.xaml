@@ -7,8 +7,8 @@
              x:Class="RandomUserApp.Presentation.UX.UI.Views.UsersCollectionView"
              xmlns:windows="clr-namespace:Xamarin.Forms.PlatformConfiguration.WindowsSpecific;assembly=Xamarin.Forms.Core" 
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
-             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations" 
-             xmlns:model="clr-namespace:RandomUserApp.Domain.Models">
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:model="clr-namespace:RandomUserApp.Data.DTOs">
     <ContentView.Content>
         <RefreshView x:DataType="local:UsersViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" windows:RefreshView.RefreshPullDirection="RightToLeft">
             <CollectionView x:Name="ItemsListView"

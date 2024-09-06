@@ -6,9 +6,21 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Refit" Version="6.3.2" />
-    <PackageReference Include="SkiaSharp" Version="2.88.0" />
-    <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
+    <Compile Remove="Presentation\UX\Common\**" />
+    <Compile Remove="Presentation\UX\UI\Styles\**" />
+    <Compile Remove="Presentation\UX\Views\**" />
+    <EmbeddedResource Remove="Presentation\UX\Common\**" />
+    <EmbeddedResource Remove="Presentation\UX\UI\Styles\**" />
+    <EmbeddedResource Remove="Presentation\UX\Views\**" />
+    <None Remove="Presentation\UX\Common\**" />
+    <None Remove="Presentation\UX\UI\Styles\**" />
+    <None Remove="Presentation\UX\Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<PackageReference Include="Refit" Version="7.1.2" />
+	<PackageReference Include="SkiaSharp" Version="2.88.0" />
+	<PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.2" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
@@ -17,14 +29,6 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />  
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\Entities\" />
-    <Folder Include="Domain\UseCases\" />
-    <Folder Include="Presentation\UX\Common\" />
-    <Folder Include="Presentation\UX\Views\" />
-    <Folder Include="Presentation\UX\UI\Styles\" />
   </ItemGroup>
 
   <ItemGroup>

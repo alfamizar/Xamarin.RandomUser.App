@@ -1,5 +1,5 @@
-﻿using RandomUserApp.Data.Repositories.Rest;
-using RandomUserApp.Domain.Models;
+﻿using RandomUserApp.Data.DTOs;
+using RandomUserApp.Data.Repositories.Rest;
 using System.Text.Json;
 using Xamarin.Forms;
 
