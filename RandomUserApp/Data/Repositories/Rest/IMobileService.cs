@@ -1,7 +1,4 @@
 ﻿using RandomUserApp.Data.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RandomUserApp.Data.Repositories.Rest

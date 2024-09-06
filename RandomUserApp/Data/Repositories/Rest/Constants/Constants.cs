@@ -1,4 +1,4 @@
-﻿namespace RandomUserApp.Constants
+﻿namespace RandomUserApp.Data.Repositories.Rest.Constants
 {
     public static class Constants
     {

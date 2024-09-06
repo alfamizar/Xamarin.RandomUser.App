@@ -1,9 +1,6 @@
 ﻿using RandomUserApp.Data.DTOs;
 using Refit;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RandomUserApp.Data.Repositories.Rest
